@@ -1,0 +1,272 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA000001 /* Wraith.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA000010 /* Wraith.cpp */; };
+		AA000003 /* plugin_start.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA000020 /* plugin_start.cpp */; };
+		AA000004 /* libkmod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA000030 /* libkmod.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AA000010 /* Wraith.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Wraith.cpp; sourceTree = "<group>"; };
+		AA000013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA000020 /* plugin_start.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = plugin_start.cpp; path = Lilu.kext/Contents/Resources/Library/plugin_start.cpp; sourceTree = SOURCE_ROOT; };
+		AA000030 /* libkmod.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libkmod.a; path = Lilu.kext/Contents/Resources/Library/libkmod.a; sourceTree = SOURCE_ROOT; };
+		AA000040 /* Wraith.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Wraith.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA000050 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA000004 /* libkmod.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA000060 /* / */ = {
+			isa = PBXGroup;
+			children = (
+				AA000061 /* Wraith */,
+				AA000062 /* SDK */,
+				AA000063 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA000061 /* Wraith */ = {
+			isa = PBXGroup;
+			children = (
+				AA000010 /* Wraith.cpp */,
+				AA000013 /* Info.plist */,
+			);
+			path = Wraith;
+			sourceTree = "<group>";
+		};
+		AA000062 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				AA000020 /* plugin_start.cpp */,
+				AA000030 /* libkmod.a */,
+			);
+			name = SDK;
+			sourceTree = "<group>";
+		};
+		AA000063 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA000040 /* Wraith.kext */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA000070 /* Wraith */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA000080 /* Build configuration list for PBXNativeTarget "Wraith" */;
+			buildPhases = (
+				AA000051 /* Sources */,
+				AA000050 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Wraith;
+			productName = Wraith;
+			productReference = AA000040 /* Wraith.kext */;
+			productType = "com.apple.product-type.kernel-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA000090 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = AA000091 /* Build configuration list for PBXProject "Wraith" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA000060 /* / */;
+			productRefGroup = AA000063 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA000070 /* Wraith */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA000051 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA000001 /* Wraith.cpp in Sources */,
+				AA000003 /* plugin_start.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AA000081 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = NO;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"PRODUCT_NAME=$(PRODUCT_NAME)",
+					"MODULE_VERSION=$(DYLIB_CURRENT_VERSION)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/Lilu.kext/Contents/Resources/Headers",
+					"$(SRCROOT)/MacKernelSDK/Headers",
+				);
+				INFOPLIST_FILE = Wraith/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Extensions";
+				KERNEL_EXTENSION_VERIFIER = NO;
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/Lilu.kext/Contents/Resources/Library",
+					"$(SRCROOT)/MacKernelSDK/Library/x86_64",
+				);
+				MODULE_NAME = com.wraith.kext.Wraith;
+				MODULE_START = _kmod_start;
+				MODULE_STOP = _kmod_stop;
+				MODULE_VERSION = "1.0.0";
+				OTHER_CFLAGS = (
+					"-mkernel",
+					"-fno-builtin",
+				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-kext",
+					"-lkmod",
+					"-lcc_kext",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wraith.kext.Wraith;
+				PRODUCT_NAME = Wraith;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Debug;
+		};
+		AA000082 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = NO;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PRODUCT_NAME=$(PRODUCT_NAME)",
+					"MODULE_VERSION=$(DYLIB_CURRENT_VERSION)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/Lilu.kext/Contents/Resources/Headers",
+					"$(SRCROOT)/MacKernelSDK/Headers",
+				);
+				INFOPLIST_FILE = Wraith/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Extensions";
+				KERNEL_EXTENSION_VERIFIER = NO;
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/Lilu.kext/Contents/Resources/Library",
+					"$(SRCROOT)/MacKernelSDK/Library/x86_64",
+				);
+				MODULE_NAME = com.wraith.kext.Wraith;
+				MODULE_START = _kmod_start;
+				MODULE_STOP = _kmod_stop;
+				MODULE_VERSION = "1.0.0";
+				OTHER_CFLAGS = (
+					"-mkernel",
+					"-fno-builtin",
+				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-kext",
+					"-lkmod",
+					"-lcc_kext",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wraith.kext.Wraith;
+				PRODUCT_NAME = Wraith;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Release;
+		};
+		AA000092 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+			};
+			name = Debug;
+		};
+		AA000093 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA000080 /* Build configuration list for PBXNativeTarget "Wraith" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA000081 /* Debug */,
+				AA000082 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA000091 /* Build configuration list for PBXProject "Wraith" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA000092 /* Debug */,
+				AA000093 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = AA000090 /* Project object */;
+}
