@@ -14,27 +14,16 @@
 //
 // Based on sysctl OID walking technique from RestrictEvents by acidanthera.
 // Original copyright © 2020 vit9696. BSD-3-Clause licence.
-// Modifications copyright © 2026 David Parsons.
+// Modifications copyright © 2024 Wraith contributors.
 //
 
-#include <sys/sysctl.h>
-#include <IOKit/IOService.h>
-#include <Headers/kern_api.hpp>
-#include <Headers/kern_nvram.hpp>
-#include <Headers/kern_efi.hpp>
-#include <Headers/plugin_start.hpp>
+#include <stddef.h>
 
-// ──────────────────────────────────────────────────────────────────────────────
-// Boot argument identifiers
-// ──────────────────────────────────────────────────────────────────────────────
-
-static const char *bootargOff[]   { "-wrtoff"  };
-static const char *bootargDebug[] { "-wrtdbg"  };
-static const char *bootargBeta[]  { "-wrtbeta" };
-
-// ──────────────────────────────────────────────────────────────────────────────
-// sysctl OID structure mirrors (from XNU bsd/sys/sysctl.h)
-// ──────────────────────────────────────────────────────────────────────────────
+// Forward-declare the sysctl OID types we need.
+// We do NOT include <sys/sysctl.h> or <sys/kern_sysctl.h> because both
+// conflict with Lilu / MacKernelSDK headers in a kext build environment.
+// These declarations match XNU bsd/sys/sysctl.h exactly.
+struct sysctl_req;
 
 struct sysctl_oid;
 
@@ -59,7 +48,24 @@ struct sysctl_oid {
     int                     oid_refcnt;
 };
 
-#define SYSCTL_CHILDREN(oidp) ((struct sysctl_oid_list *)(oidp)->oid_arg1)
+#define SYSCTL_CHILDREN(oidp)     (reinterpret_cast<sysctl_oid_list *>((oidp)->oid_arg1))
+
+#define SYSCTL_OUT(r, p, l) sysctl_handle_opaque(r, p, l)
+extern "C" int sysctl_handle_opaque(struct sysctl_req *, void *, size_t);
+
+#include <IOKit/IOService.h>
+#include <Headers/kern_api.hpp>
+#include <Headers/kern_nvram.hpp>
+#include <Headers/kern_efi.hpp>
+#include <Headers/plugin_start.hpp>
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Boot argument identifiers
+// ──────────────────────────────────────────────────────────────────────────────
+
+static const char *bootargOff[]   { "-wrtoff"  };
+static const char *bootargDebug[] { "-wrtdbg"  };
+static const char *bootargBeta[]  { "-wrtbeta" };
 
 // ──────────────────────────────────────────────────────────────────────────────
 // State
